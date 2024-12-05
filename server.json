@@ -1,0 +1,6 @@
+{
+  "port": 9800,
+  "watch": true,
+  "routes": "./routes.json",
+  "middlewares": ["./middle-wares/abc.js"]
+}
