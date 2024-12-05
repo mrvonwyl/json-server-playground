@@ -4,6 +4,16 @@
       "description": "Hello",
       "lerbgruppenId": "0001",
       "id": 1
+    },
+    {
+      "description": "World",
+      "lerbgruppenId": "0001",
+      "id": 2
+    },
+    {
+      "description": "Other",
+      "lerbgruppenId": "0002",
+      "id": 3
     }
   ]
 }

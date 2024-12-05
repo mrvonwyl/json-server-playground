@@ -1,0 +1,61 @@
+{
+	"info": {
+		"_postman_id": "dd9a64f1-5d2c-4391-8bb7-12c2c63415f4",
+		"name": "JSON Server Playground",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4147260"
+	},
+	"item": [
+		{
+			"name": "Detail",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:9800/lerbgruppen/0001/details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9800",
+					"path": [
+						"lerbgruppen",
+						"0001",
+						"details"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Details",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\": \"Hello\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9800/lerbgruppen/0001/details",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9800",
+					"path": [
+						"lerbgruppen",
+						"0001",
+						"details"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

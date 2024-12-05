@@ -1,15 +1,38 @@
-const returnAllDetailsOnCreation = (req, res, next) => {
+export const returnAllDetailsOnCreation = (req, res, next) => {
   const { path, method } = req;
-
   const isPath = /^\/lerbgruppen\/\d+\/details$/.test(path);
 
-  console.log(path, isPath);
+  if (isPath && method === "POST") {
+    const originalSend = res.send;
 
-  if (isPath) {
-    console.log("isPath");
+    res.send = function (body) {
+      console.log("SEEEEND!");
+
+      const json = JSON.parse(body);
+
+      if (!Array.isArray(json)) {
+        const db = req.app.db;
+
+        if (!db) {
+          console.error("Database access failed");
+          return originalJson.call(this, { error: "Database not available" });
+        }
+
+        // Query the database for all details for the given `lerbgruppeId`
+        const id = path.split("/")[2];
+        const lerbgruppeDetails = db
+          .get("details")
+          .filter({ lerbgruppenId: id })
+          .value();
+
+        return originalSend.call(this, lerbgruppeDetails);
+      }
+
+      return originalSend.call(this, body);
+    };
   }
 
   next();
 };
 
-module.exports = [returnAllDetailsOnCreation];
+// module.exports = [returnAllDetailsOnCreation];
