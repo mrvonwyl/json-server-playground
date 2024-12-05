@@ -1,5 +1,4 @@
 {
-  "type": "module",
   "scripts": {
     "serve": "json-server -c ./server.json ./db.json"
   },

@@ -1,6 +1,13 @@
+/**
+ * Preqrequisites for this file to work
+ * - the package.json requires this property: "type": "module",
+ * - the middlewares need to be "export cost" instead of module.exports
+ * start with node ./server.js
+ */
+
 import { readFileSync } from "fs";
 import jsonServer from "json-server";
-import { returnAllDetailsOnCreation } from "./middle-wares/returnAllDetailsOnCreation.js";
+import { returnAllDetailsOnCreation } from "./middleswares/returnAllDetailsOnCreation.js";
 
 const server = jsonServer.create();
 const router = jsonServer.router("db.json"); // Use your db.json file

@@ -1,4 +1,4 @@
-export const returnAllDetailsOnCreation = (req, res, next) => {
+const returnAllDetailsOnCreation = (req, res, next) => {
   const { path, method } = req;
   const isPath = /^\/lerbgruppen\/\d+\/details$/.test(path);
 
@@ -15,7 +15,7 @@ export const returnAllDetailsOnCreation = (req, res, next) => {
 
         if (!db) {
           console.error("Database access failed");
-          return originalJson.call(this, { error: "Database not available" });
+          return originalSend.call(this, { error: "Database not available" });
         }
 
         // Query the database for all details for the given `lerbgruppeId`
@@ -35,4 +35,4 @@ export const returnAllDetailsOnCreation = (req, res, next) => {
   next();
 };
 
-// module.exports = [returnAllDetailsOnCreation];
+module.exports = [returnAllDetailsOnCreation];
