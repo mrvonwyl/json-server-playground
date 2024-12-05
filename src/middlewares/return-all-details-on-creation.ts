@@ -1,4 +1,10 @@
-const returnAllDetailsOnCreation = (req, res, next) => {
+import { NextFunction, Request, Response } from "express";
+
+const returnAllDetailsOnCreation = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   const { path, method } = req;
   const isPath = /^\/lerbgruppen\/\d+\/details$/.test(path);
 
@@ -6,12 +12,10 @@ const returnAllDetailsOnCreation = (req, res, next) => {
     const originalSend = res.send;
 
     res.send = function (body) {
-      console.log("SEEEEND!");
-
       const json = JSON.parse(body);
 
       if (!Array.isArray(json)) {
-        const db = req.app.db;
+        const db = (req.app as any).db;
 
         if (!db) {
           console.error("Database access failed");

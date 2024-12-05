@@ -7,7 +7,7 @@
 
 import { readFileSync } from "fs";
 import jsonServer from "json-server";
-import { returnAllDetailsOnCreation } from "./middleswares/returnAllDetailsOnCreation.js";
+// import { returnAllDetailsOnCreation } from "./middleswares/returnAllDetailsOnCreation.js";
 
 const server = jsonServer.create();
 const router = jsonServer.router("db.json"); // Use your db.json file
@@ -20,13 +20,13 @@ const routes = JSON.parse(readFileSync("routes.json", "utf-8"));
 server.use(defaults);
 
 // Add custom middlewares
-server.use(returnAllDetailsOnCreation);
+// server.use(returnAllDetailsOnCreation);
 
 // Use custom routes
 server.use(jsonServer.rewriter(routes));
 
 // Attach database to app for use in middleware
-server.db = router.db;
+(server as any).db = router.db;
 
 // Add router (handles REST endpoints)
 server.use(router);

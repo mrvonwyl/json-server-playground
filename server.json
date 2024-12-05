@@ -2,5 +2,5 @@
   "port": 9800,
   "watch": true,
   "routes": "./routes.json",
-  "middlewares": ["./middle-wares/returnAllDetailsOnCreation.js"]
+  "middlewares": ["./dist/middlewares/return-all-details-on-creation.js"]
 }
